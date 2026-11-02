@@ -1,0 +1,50 @@
+# Данные салона. Цены, мастера и часы работы меняются здесь — код трогать не нужно.
+# После правки перезапустите бота.
+
+name = "Мята"
+address = "ул. Садовая, 12"
+timezone = "Europe/Moscow"
+max_active_bookings = 3     # сколько будущих записей может быть у одного клиента
+
+[schedule]
+workdays = [1, 2, 3, 4, 5, 6]   # 1 — понедельник … 7 — воскресенье
+opens = "10:00"
+closes = "20:00"
+breaks = [["13:00", "14:00"]]
+days_ahead = 6                  # сколько ближайших дней со свободным временем показывать
+min_lead_minutes = 60           # записаться можно не позже чем за час до начала
+
+[reminders]
+day_before_at = "18:00"         # накануне визита, в 18:00
+before_minutes = 120            # и за 2 часа до начала
+
+[[masters]]
+id = "vera"
+name = "Вера"
+
+[[masters]]
+id = "olga"
+name = "Ольга"
+
+# Порядок услуг — как на кнопках. masters — кто оказывает услугу (бот выберет первого свободного).
+[[services]]
+id = "haircut"
+title = "Стрижка"
+price = 1500
+duration_minutes = 60
+masters = ["olga"]
+
+[[services]]
+id = "coloring"
+title = "Окрашивание"
+price = 3500
+price_from = true
+duration_minutes = 150
+masters = ["olga"]
+
+[[services]]
+id = "manicure"
+title = "Маникюр"
+price = 1800
+duration_minutes = 90
+masters = ["vera"]

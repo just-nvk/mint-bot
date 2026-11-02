@@ -1,0 +1,17 @@
+# systemd-сервис: бот стартует вместе с сервером и перезапускается при сбое.
+# Установка — см. README, раздел «Запуск на сервере».
+[Unit]
+Description=Mint booking bot (Telegram)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=mint
+WorkingDirectory=/opt/mint-bot
+ExecStart=/opt/mint-bot/.venv/bin/python -m mint_bot
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
